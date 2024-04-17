@@ -16,7 +16,7 @@ Go ahead and get started by following the installation steps below. You'll submi
 
 # Installation
 
-1. Fork this repository.
+1. Fork and clone this repository.
 2. Navigate to the project's folder.
 3. Run `npm install` to install.
 4. To run the unit tests, run `npm test`.
