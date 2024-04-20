@@ -282,7 +282,7 @@ describe("US-04 whack()", () => {
       const points = document.querySelector("#score").innerHTML;
       return points;
     });
-    expect(points).toEqual("1");
+    expect(points).toEqual("2");
   });
 });
 

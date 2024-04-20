@@ -48,7 +48,7 @@ function setDelay(difficulty) {
   }else if (difficulty === "hard"){
     return randomInteger(600, 1200);
   }else {
-    return 1000;
+    return null;
   }
   
 }
@@ -69,7 +69,7 @@ function setDelay(difficulty) {
  */
 function chooseHole(holes) {
   // TODO: Write your code here.
-  const index = Math.floor(Math.random() * (8 - 0 + 1)) + 0;
+  const index = randomInteger(0,8);
   const hole = holes[index];
   if (hole === lastHole) {
     return chooseHole(holes);
@@ -121,7 +121,7 @@ function gameOver() {
 *
 */
 function showUp() {
-  let delay = setDelay("normal"); // TODO: Update so that it uses setDelay()
+  let delay = setDelay(difficulty); // TODO: Update so that it uses setDelay()
   const hole = chooseHole(holes);  // TODO: Update so that it use chooseHole()
   return showAndHide(hole, delay);
 }
@@ -153,7 +153,7 @@ function showAndHide(hole, delay){
 */
 function toggleVisibility(hole){
   // TODO: add hole.classList.toggle so that it adds or removes the 'show' class.
-  let hole = chooseHole(holes);
+  // let hole = chooseHole(holes);
   hole.classList.toggle("show");
   
   return hole;
@@ -214,7 +214,7 @@ function updateTimer() {
 */
 function startTimer() {
   // TODO: Write your code here
-  // timer = setInterval(updateTimer, 1000);
+  timer = setInterval(updateTimer, 1000);
   return timer;
 }
 
@@ -275,12 +275,34 @@ function stopGame(){
 *
 */
 function startGame(){
+  startTimer()
   setDuration(10);
   showUp();
+  setEventListeners();
   return "game started";
 }
 
 startButton.addEventListener("click", startGame);
+
+const audioHit = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/hit.mp3?raw=true");
+const song = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/molesong.mp3?raw=true");
+
+function playAudio(audioObject) {
+  audioObject.play();
+}
+
+function loopAudio(audioObject) {
+  audioObject.loop = true;
+  playAudio(audioObject);
+}
+
+function stopAudio(audioObject) {
+  audioObject.pause();
+}
+
+function play(){
+  playAudio(song);
+}
 
 
 // Please do not modify the code below.
